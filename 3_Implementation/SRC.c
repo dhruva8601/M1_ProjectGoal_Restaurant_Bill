@@ -6,15 +6,15 @@
 void generateBillHeader(char name[50], char date[30]){
     printf("\n\n");
         printf("\t   HOT ON WHEELS RESTAURANT\n");
-        printf("\t   ----------------------------");
-        printf("\n Date: %s", date);
-        printf("\n Invoice Generated to: %s", name);
+        printf("\t  ----------------------------");
+        printf("\nDate: %s", date);
+        printf("\nInvoice Generated to: %s", name);
         printf("\n");
         printf("---------------------------------------------------");
-        printf("\nItems\t\t\t");
-        printf("Quantity\t\t\t");
-        printf("Total\t\t\t");
-        printf("---------------------------------------------------");
+        printf("\nItems\t\t");
+        printf("Quantity\t\t");
+        printf("Total\t\t");
+        printf("\n---------------------------------------------------");
         printf("\n\n");
 }
 void generateBillBody(char item[30], int qty, float price){
@@ -47,10 +47,10 @@ void billfooter(float total){
     printf("---------------------------------------------------\n");
     printf("Sub Total\t\t\t%.2f",total);
     printf("\nDiscount @10%s\t\t\t%.2f","%",dis);
-    printf("\n\t\t\t------------");
+    printf("\n\t\t\t\t------------");
     printf("\nNet Total\t\t\t%.2f",netTotal);
-    printf("\nCGST @9%s\t\t\t%.2f","%",cgst);
-    printf("\nSGST @9%s\t\t\t%.2f","%",cgst);
+    printf("\nCGST @ 9%s\t\t\t%.2f","%",cgst);
+    printf("\nSGST @ 9%s\t\t\t%.2f","%",cgst);
     printf("\n---------------------------------------------------");
     printf("\nGrand Total\t\t\t%.2f",grandTotal);
     printf("\n---------------------------------------------------\n");
@@ -67,8 +67,8 @@ main(){
     system("cls");
     float total;
     int invoiceFound =0;
-    printf("\t=========HOT WHEELS RESTAURANT=========");
-    printf("\n\n Please select your option:");
+    printf("\t========= HOT ON WHEELS RESTAURANT =========");
+    printf("\n\nPlease select your option:");
     printf("\n\n1.Generate Invoice");
     printf("\n2.Show all the Inovices");
     printf("\n3.Search an Invoice");
@@ -82,23 +82,23 @@ main(){
     {
     case 1:
     system("cls"); // clears the output before the execution of next block
-    printf("\n Please enter the name of the customer\t: ");
+    printf("\nPlease enter the name of the customer\t: ");
     fgets(o1.customer,50,stdin);
     o1.customer[strlen(o1.customer)-1]=0; //to remove the last (\n) character from name variable
     strcpy(o1.date,__DATE__);
-    printf("\n Please enter the number of ITEMS\t\t");
+    printf("\nPlease enter the number of Items\t:");
     scanf("%d",&n);
     o1.numofItems=n;
 
     for(int i=0;i<n;i++){
         fgetc(stdin);
         printf("\n\n");
-        printf("Please enter the item %d:\t",i+1);
+        printf("Please enter the item %d\t\t:",i+1);
         fgets(o1.itm[i].item,20,stdin);
         o1.itm[i].item[strlen(o1.itm[i].item)-1]=0;
-        printf("\nPlease enter the quantity:\t");
+        printf("\nPlease enter the quantity\t\t:");
         scanf("%d",&o1.itm[i].qty);
-        printf("Please enter the price of single quantity:\t");
+        printf("\nPlease enter the price of one item\t:");
         scanf("%f",&o1.itm[i].price);
         total += o1.itm[i].qty * o1.itm[i].price;
     }
@@ -178,6 +178,6 @@ main(){
     scanf("%s",&contFlag);
     }
     printf("\n\t\tThankyou for using the software ");
-    printf("\n]n");
+    printf("\n\n");
 return 0;
 }
