@@ -30,14 +30,14 @@ int main(){
     char savebill = 'y', contFlag ='y';
     FILE *fp;
     while(contFlag =='y'){
-    system("cls");
+    system("clear");
     float total;
     int invoiceFound =0;
     
     switch (num)
     {
     case 1:
-    system("cls"); // clears the output before the execution of next block
+    system("clear"); // clears the output before the execution of next block
     printf("\nPlease enter the name of the customer\t: ");
     fgets(o1.customer,50,stdin);
     o1.customer[strlen(o1.customer)-1]=0; //to remove the last (\n) character from name variable
@@ -80,8 +80,8 @@ int main(){
     }
      break;
     case 2 :
-    system("cls");
-    fp = fopen("Invoice.txt","r");
+    system("clear");
+    fp = fopen("Invoice.txt","rb+");
     printf("\n *****Your Previous Invoices*****\n");
     while(fread(&o2,sizeof(struct orders),1,fp)){
         float tot = 0;
@@ -99,8 +99,8 @@ int main(){
     printf("\n Enter the name of the customer:\t");
     fgets(name,50,stdin);
     name[strlen(name)-1]=0;
-    system("cls");
-    fp = fopen("Invoice.txt","r");
+    system("clear");
+    fp = fopen("Invoice.txt","rb+");
     printf("\t*****Invoice of %s*****\n",name);
     while(fread(&o2,sizeof(struct orders),1,fp)){
         float tot = 0;
