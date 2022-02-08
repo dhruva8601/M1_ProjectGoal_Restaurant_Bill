@@ -1,3 +1,14 @@
+/**
+ * @file SRC.c
+ * @author Dhruva
+ * @brief Restaurant Invoice Generator, which helps you keep track of your generated invoices
+ * @version 0.1
+ * @date 2022-02-08
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
