@@ -9,27 +9,11 @@
  * 
  */
 
-#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include "generateBill.h"
 #include "dashboard.h"
-
-
-struct items
-{
-    char item[20];
-    float price;
-    int qty;
-};
-struct orders
-{
-    /* data */
-    char customer[50];
-    char date[50];
-    int numofItems;
-    struct items itm[50];
-};
+#include "struct.h"
 
 
 
@@ -41,6 +25,7 @@ int main(){
     char savebill = 'y', contFlag ='y';
     FILE *fp;
     while(contFlag =='y'){
+    dashBoard(num);
     system("clear");
     float total;
     int invoiceFound =0;
