@@ -17,6 +17,8 @@ jobs:
       run: ./configure
     - name: make
       run: make
+    - name: make all
+      run:  make all -C M1_ProjectGoal_Restaurant_Bill/3_Implementation/
     - name: make check
       run: make check
     - name: make distcheck
