@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __BILL_RESTAURANT_H__
-#define __BILL_RESTAURANT_H__
+#ifndef __RESTAURANT_BILL_H__
+#define __RESTAURANT_BILL_H__
 
 
 #include "math.h"
@@ -27,4 +27,4 @@ typedef struct entity_orders{
     items itm[50];
 }orders;
 
-#endif //#ifndef BILL_RESTAURANT
+#endif //#ifndef RESTAURANT_BILL

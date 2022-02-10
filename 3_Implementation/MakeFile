@@ -10,14 +10,14 @@ src/restaurant_operations.c
 
 # All test source files
 TEST_SRC = src/restaurant_operations.c\
-test/test_Bill_Restaurant_operations.c\
-unity/unity.c\
+unit/test_billing_operations.c\
+unit/unity.c\
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
 
 # All include folders with header files
 INC	= -Iinc\
--Iunity\
+-Iunit\
 
 
 
