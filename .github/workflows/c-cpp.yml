@@ -15,6 +15,6 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: make all
-      run:  make all -C M1_ProjectGoal_Restaurant_Bill/3_Implementation/
+      run:  make all -C 3_Implementation/
 
 
