@@ -1,4 +1,5 @@
-#include "./inc/restaurant_operations.h"
+#include "../inc/restaurant_operations.h"
+#include "dashboard.h"
 
 
 /*Function to generate Bill Header */
@@ -25,7 +26,8 @@ int main(){
 		system("clear");
 		float total=0;
 		int invoiceFound = 0;
-	printf("\t======== HOT ON WHEELS RESTAURANT ==========");
+		dashboard(option);
+	/*printf("\t======== HOT ON WHEELS RESTAURANT ==========");
 	printf("\n\nPlease select an operation :");
 	printf("\n\n1. Generate Invoice");
 	printf("\n\n2. Show all Invoices");
@@ -34,7 +36,7 @@ int main(){
 
 	printf("\n\nYour choice:\t");
 	scanf("%d",&option);
-	fgetc(stdin);
+	fgetc(stdin);*/
 	
 	switch(option){
 		case 1:
@@ -42,7 +44,6 @@ int main(){
 		printf("Enter the name of customer :\t");
 		fgets(order.customer,50,stdin);
 		order.customer[strlen(order.customer)-1] =0;
-		//strcpy(ord.date,_DATE_);
 		printf("\nEnter number of items buyed:\t");
 		scanf("%d",&order.numOfitems);
 
@@ -56,7 +57,7 @@ int main(){
 			scanf("%f",&order.itm[i].qty);
 			printf("Please enter the unit price\t\t:");
 			scanf("%f",&order.itm[i].price);
-			total+= total_bill(order.itm[i].qty, order.itm[i].price);
+			total+= total_bill(order.itm[i].qty, order.itm[i].price);//calls total_bill function 
 
 			
 		}
@@ -66,7 +67,7 @@ int main(){
 		}
 		generate_bill_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
-		scanf("%s",&saveBill);
+		scanf("%1s",&saveBill);
 
 		if(saveBill == 'y'){
 			fp = fopen("InvoiceBill.txt","a+");
@@ -142,7 +143,7 @@ int main(){
 		
 	}
 	printf("\n Do you want to perform another operation [y/n]?\t:");
-	scanf("%s",&contFlag);
+	scanf("%1s",&contFlag);
 	}
 	printf("\n\t\t Bye bye \n\n");
 	return 0;
