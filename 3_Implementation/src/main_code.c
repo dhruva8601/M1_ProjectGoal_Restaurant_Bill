@@ -1,5 +1,4 @@
 #include "../inc/restaurant_operations.h"
-#include "dashboard.h"
 
 
 /*Function to generate Bill Header */
@@ -26,8 +25,7 @@ int main(){
 		system("clear");
 		float total=0;
 		int invoiceFound = 0;
-		dashboard(option);
-	/*printf("\t======== HOT ON WHEELS RESTAURANT ==========");
+	printf("\t======== HOT ON WHEELS RESTAURANT ==========");
 	printf("\n\nPlease select an operation :");
 	printf("\n\n1. Generate Invoice");
 	printf("\n\n2. Show all Invoices");
@@ -36,7 +34,7 @@ int main(){
 
 	printf("\n\nYour choice:\t");
 	scanf("%d",&option);
-	fgetc(stdin);*/
+	fgetc(stdin);
 	
 	switch(option){
 		case 1:
