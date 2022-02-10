@@ -6,8 +6,8 @@ void test_total_bill(void);
 void test_net_total(void);
 void test_grand_total(void);
 
-void setUp(void){}
-void tearDown(void){}
+void setUp(void);
+void tearDown(void);
 
 int main()
 {
