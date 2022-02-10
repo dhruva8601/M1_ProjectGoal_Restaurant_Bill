@@ -16,8 +16,8 @@ jobs:
 
 
     - name: build
-      run: gcc 3_Implementation/src/main_code.c -o main_code.exe
+      run: gcc 3_Implementation/unit/test_billing-operations.c -o test.exe
     - name: run
-      run : ./main_code.exe
+      run : ./test.exe
 
 
