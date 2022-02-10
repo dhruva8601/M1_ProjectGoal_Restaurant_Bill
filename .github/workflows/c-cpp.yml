@@ -15,9 +15,7 @@ jobs:
     - uses: actions/checkout@v2
 
 
-    - name: build
-      run: gcc 3_Implementation/unit/test_billing-operations.c -o test.exe
-    - name: run
-      run : ./test.exe
+    - name: make all
+      run:  make all -C 3_Implementation/
 
 
