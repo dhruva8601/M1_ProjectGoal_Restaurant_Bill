@@ -29,5 +29,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: make test
         run: |
-          make test -C M1_ProjectGoal_Restaurant_Bill/3_Implementation/
-          valgrind ./M1_ProjectGoal_Restaurant_Bill/3_Implementation/build/bill.out
+          make test -C 3_Implementation/
+          valgrind 3_Implementation/build/bill.out
