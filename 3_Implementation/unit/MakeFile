@@ -50,7 +50,7 @@ all: $(SRC) $(BUILD)
 	gcc $(SRC) $(INC) -o $(call FixPath,$(PROJECT_OUTPUT))
 
 # Call `make run` to run the application
-run:$(PROJECT_NAME)
+run:$(PROJECT_NAME) 
 	./$(call FixPath,$(PROJECT_OUTPUT))
 
 # Document the code using Doxygen

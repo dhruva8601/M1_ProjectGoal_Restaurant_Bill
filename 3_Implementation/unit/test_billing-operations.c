@@ -1,4 +1,5 @@
 #include "unity.h"
+#include "unity_internals.h"
 #include "../inc/restaurant_operations.h"
 
 /* Prototypes for all the test functions */

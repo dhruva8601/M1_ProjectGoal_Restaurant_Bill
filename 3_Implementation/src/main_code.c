@@ -178,7 +178,7 @@ int main(){
 void generate_bill_header(char name[100], time_t date){
 	printf("\n\n" );
 	printf("\t  HOT ON WHEELS RESTAURANT");
-	printf("\n\t ================");
+	printf("\n\t    ================");
 	printf("\n Date: %s", ctime(&date));
 	printf("\n Invoice To: %s",name);
 	printf("\n");
