@@ -10,6 +10,35 @@ void generate_bill_body( items item);
 /*Function to generate Bill Footer */
 void generate_bill_footer(float total);
 
+float total_bill(float quantity, float price){
+    float total=0;
+        total = quantity * price; // calculates the total for the customer
+    return total;
+}
+
+float net_total(float total){
+    float dis = 0.2 * total; //20% discount
+    total = total - dis;
+    return total;
+}
+
+float grand_total(float net_total){
+    float gst = 0.18 * net_total; //GST @18%
+    float grand_total = net_total + gst;
+    return grand_total;
+}
+
+int save_bill( orders order){
+    FILE *fp;
+    fp = fopen("InvoiceBill.txt","a+");
+			fwrite(&order,sizeof(orders),1,fp);
+            fclose(fp);
+			if(fwrite != 0)
+				return 1;
+			else
+			return -1;
+}
+
 /* Start of Application */
 int main(){
 	int option;
@@ -55,7 +84,7 @@ int main(){
 			scanf("%f",&order.itm[i].qty);
 			printf("Please enter the unit price\t\t:");
 			scanf("%f",&order.itm[i].price);
-			total+= total_bill(order.itm[i].qty, order.itm[i].price);//calls total_bill function 
+			total= total_bill(order.itm[i].qty, order.itm[i].price);//calls total_bill function 
 
 			
 		}
