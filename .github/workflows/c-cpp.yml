@@ -14,8 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: make
-      run:  make -C 3_Implementation/
+
     - name: build
       run: gcc 3_Implementation/src/main_code.c -o main_code.exe
     - name: run
