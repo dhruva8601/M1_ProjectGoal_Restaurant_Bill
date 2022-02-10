@@ -16,6 +16,4 @@ jobs:
 
 
     - name: make all
-      run:  make -C 3_Implementation/Makefile
-
-
+      run:  make all -C 3_Implementation/
