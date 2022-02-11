@@ -15,5 +15,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: build
       run: gcc 3_Implementation/src/main_code.c  -o main_code.exe
-    - name: Run
+    - name: run
       run: ./main_code.exe
+
+
+
+
