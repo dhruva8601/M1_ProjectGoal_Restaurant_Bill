@@ -2,13 +2,13 @@
 
 
 /*Function to generate Bill Header */
-void generate_bill_header(char name[100], time_t date);
+void generate_header(char name[100], time_t date);
 
 /*Function to generate Bill Body */
-void generate_bill_body( items item);
+void generate_body( items item);
 
 /*Function to generate Bill Footer */
-void generate_bill_footer(float total);
+void generate_footer(float total);
 
 float total_bill(float quantity, float price){
     float total=0;
@@ -41,13 +41,13 @@ int save_bill( orders order){
 
 /* Start of Application */
 int main(){
-	int option;
-	time_t date;
+	int num;
+	time_t date;//prints date on the invoice
 	time(&date);
 	orders order,order_to_show;
-	char saveBill = 'y',contFlag='y';
+	char save= 'y',contFlag='y';
 	FILE *fp;
-	char name[50];
+	char name[100];
 
 	/* Dashboard */
 	while(contFlag =='y'){
@@ -62,19 +62,19 @@ int main(){
 	printf("\n\n4. Exit");
 
 	printf("\n\nYour choice:\t");
-	scanf("%d",&option);
+	scanf("%d",&num);
 	fgetc(stdin);
 	
-	switch(option){
+	switch(num){
 		case 1:
 		system("clear");
 		printf("Enter the name of customer :\t");
-		fgets(order.customer,50,stdin);
+		fgets(order.customer,100,stdin);
 		order.customer[strlen(order.customer)-1] =0;
 		printf("\nEnter number of items buyed:\t");
 		scanf("%d",&order.numOfitems);
 
-		for(int i=0;i<order.numOfitems;i++){
+		for(int i=0;i<order.numOfitems;i++){//enters the loop with the no.of items you bought
 			fgetc(stdin);
 			printf("\n\n");
 			printf("Please Enter the name of item %d \t:",i+1);
@@ -88,15 +88,15 @@ int main(){
 
 			
 		}
-		generate_bill_header(order.customer,date);
+		generate_header(order.customer,date);
 		for(int i=0;i<order.numOfitems;i++){
-			generate_bill_body(order.itm[i]);
+			generate_body(order.itm[i]);
 		}
-		generate_bill_footer(total);
+		generate_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
-		scanf("%1s",&saveBill);
+		scanf("%1s",&save);
 
-		if(saveBill == 'y'){
+		if(save == 'y'){//saves the bill in file and reads the contents when invoked in case2
 			fp = fopen("InvoiceBill.txt","a+");
 			fwrite(&order,sizeof(orders),1,fp);			
 			if(fwrite != 0)
@@ -118,12 +118,12 @@ int main(){
 		while (fread(&order_to_show,sizeof(orders),1,fp))
 		{
 			float total_to_show = 0;
-			generate_bill_header(order_to_show.customer, date);
+			generate_header(order_to_show.customer, date);
 			for(int i = 0; i<order_to_show.numOfitems;i++){
-				generate_bill_body(order_to_show.itm[i]);
+				generate_body(order_to_show.itm[i]);
 				total_to_show+= order_to_show.itm[i].qty * order_to_show.itm[i].price;
 			}
-			generate_bill_footer(total_to_show);	
+			generate_footer(total_to_show);	
 		
 		}		fclose(fp);
 		}
@@ -144,12 +144,12 @@ int main(){
 			
 			float total_to_show = 0;
 			if(!strcmp(order_to_show.customer,name)){
-				generate_bill_header(order_to_show.customer, date);
+				generate_header(order_to_show.customer, date);
 				for(int i = 0; i<order_to_show.numOfitems;i++){
-				generate_bill_body(order_to_show.itm[i]);
+				generate_body(order_to_show.itm[i]);
 				total_to_show+= order_to_show.itm[i].qty * order_to_show.itm[i].price;
 			}
-			generate_bill_footer(total_to_show);	
+			generate_footer(total_to_show);	
 			invoiceFound = 1;
 		
 		}	
@@ -165,7 +165,7 @@ int main(){
 		exit(0);
 		break;
 		default:
-		printf("Sorry invalid Option");
+		printf("Sorry... Invalid Option!!!");
 		break;
 		
 	}
@@ -175,21 +175,21 @@ int main(){
 	printf("\n\t\t Bye bye \n\n");
 	return 0;
 }
-void generate_bill_header(char name[100], time_t date){
+void generate_header(char name[100], time_t date){
 	printf("\n\n" );
 	printf("\t  HOT ON WHEELS RESTAURANT");
-	printf("\n\t    ================");
+	printf("\n\t   ================");
 	printf("\n Date: %s", ctime(&date));
 	printf("\n Invoice To: %s",name);
 	printf("\n");
 	printf("============================================\n");
 	printf("Items\t\t");
-	printf("Qty\t\t");
+	printf("Quantity\t\t");
 	printf("Total\t\t");
 	printf("\n============================================");
 	printf("\n\n");
 }
-void generate_bill_body(items item){
+void generate_body(items item){
 	printf("%s\t\t",item.item);
 	printf("%.2f\t\t", item.qty);
 	printf("%.2f\t\t", item.qty * item.price);
@@ -197,7 +197,7 @@ void generate_bill_body(items item){
 }
 
 
-void generate_bill_footer(float total){
+void generate_footer(float total){
 	printf("\n");
 	
 	float netTotal = net_total(total);
