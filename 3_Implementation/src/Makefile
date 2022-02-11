@@ -1,8 +1,8 @@
 #Target : Dependancies
 #<TAB>commands
 
-Build : main_code.c operations.c
-	gcc main_code.c operations.c  -lm -o invoice.out -o operations.out
+Build : main_code.c 
+	gcc main_code.c -lm -o invoice.out 
 
 Run : Build
 	./invoice.out 
