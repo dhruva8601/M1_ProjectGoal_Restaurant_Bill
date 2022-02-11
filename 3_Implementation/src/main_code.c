@@ -10,61 +10,29 @@ void generate_body( items item);
 /*Function to generate Bill Footer */
 void generate_footer(float total);
 
-float total_bill(float quantity, float price){
-    float total=0;
-        total = quantity * price; // calculates the total for the customer
-    return total;
-}
-
-float net_total(float total){
-    float dis = 0.2 * total; //20% discount
-    total = total - dis;
-    return total;
-}
-
-float grand_total(float net_total){
-    float gst = 0.18 * net_total; //GST @18%
-    float grand_total = net_total + gst;
-    return grand_total;
-}
-
-int save_bill( orders order){
-    FILE *fp;
-    fp = fopen("InvoiceBill.txt","a+");
-			fwrite(&order,sizeof(orders),1,fp);
-            fclose(fp);
-			if(fwrite != 0)
-				return 1;
-			else
-			return -1;
-}
 
 /* Start of Application */
 int main(){
-	int num;
-	time_t date;//prints date on the invoice
-	time(&date);
-	orders order,order_to_show;
-	char save= 'y',contFlag='y';
-	FILE *fp;
-	char name[100];
-
-	/* Dashboard */
-	while(contFlag =='y'){
-		system("clear");
-		float total=0;
-		int invoiceFound = 0;
+int num;
+time_t date;//prints date on the invoice
+time(&date);
+orders order,order_to_show;
+char save= 'y',contFlag='y';
+FILE *fp;
+char name[100];
+while(contFlag =='y'){
+	system("clear");
+	float total=0;
+	int invoiceFound = 0;
 	printf("\t======== HOT ON WHEELS RESTAURANT ==========");
 	printf("\n\nPlease select an operation :");
 	printf("\n\n1. Generate Invoice");
 	printf("\n\n2. Show all Invoices");
 	printf("\n\n3. Search Invoice");
 	printf("\n\n4. Exit");
-
 	printf("\n\nYour choice:\t");
 	scanf("%d",&num);
 	fgetc(stdin);
-	
 	switch(num){
 		case 1:
 		system("clear");
@@ -73,7 +41,6 @@ int main(){
 		order.customer[strlen(order.customer)-1] =0;
 		printf("\nEnter number of items buyed:\t");
 		scanf("%d",&order.numOfitems);
-
 		for(int i=0;i<order.numOfitems;i++){//enters the loop with the no.of items you bought
 			fgetc(stdin);
 			printf("\n\n");
@@ -84,9 +51,7 @@ int main(){
 			scanf("%f",&order.itm[i].qty);
 			printf("Please enter the unit price\t\t:");
 			scanf("%f",&order.itm[i].price);
-			total= total_bill(order.itm[i].qty, order.itm[i].price);//calls total_bill function 
-
-			
+			total= total_bill(order.itm[i].qty, order.itm[i].price);//calls total_bill function 			
 		}
 		generate_header(order.customer,date);
 		for(int i=0;i<order.numOfitems;i++){
@@ -95,7 +60,6 @@ int main(){
 		generate_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
 		scanf("%1s",&save);
-
 		if(save == 'y'){//saves the bill in file and reads the contents when invoked in case2
 			fp = fopen("InvoiceBill.txt","a+");
 			fwrite(&order,sizeof(orders),1,fp);			
@@ -104,16 +68,13 @@ int main(){
 			else
 			printf("\n Error in  Saving\n");
 			fclose(fp);
-
 		}
 		break;
 
 		case 2:
 		system("clear");
 		fp = fopen("InvoiceBill.txt","r");
-		if(fp){
-
-		
+		if(fp){		
 		printf("\n ****** Your Previous Invoices ********\n");
 		while (fread(&order_to_show,sizeof(orders),1,fp))
 		{
@@ -140,8 +101,7 @@ int main(){
 		fp = fopen("InvoiceBill.txt","r");
 		printf("\n \t****** Invoice of %s ********",name);
 		while (fread(&order_to_show,sizeof(orders),1,fp))
-		{
-			
+		{			
 			float total_to_show = 0;
 			if(!strcmp(order_to_show.customer,name)){
 				generate_header(order_to_show.customer, date);
@@ -150,8 +110,7 @@ int main(){
 				total_to_show+= order_to_show.itm[i].qty * order_to_show.itm[i].price;
 			}
 			generate_footer(total_to_show);	
-			invoiceFound = 1;
-		
+			invoiceFound = 1;		
 		}	
 			}
 			if(!invoiceFound){
@@ -195,11 +154,8 @@ void generate_body(items item){
 	printf("%.2f\t\t", item.qty * item.price);
 	printf("\n");
 }
-
-
 void generate_footer(float total){
-	printf("\n");
-	
+	printf("\n");	
 	float netTotal = net_total(total);
 	float grandTotal = grand_total(netTotal);
 	printf("-------------------------------------------\n");
@@ -211,4 +167,31 @@ void generate_footer(float total){
 	printf("\n-------------------------------------------");
 	printf("\n Grand Total\t\t\t%.2f",grandTotal);
 	printf("\n-------------------------------------------\n");
+}
+float total_bill(float quantity, float price){
+    float total=0;
+        total = quantity * price; // calculates the total for the customer
+    return total;
+}
+
+float net_total(float total){
+    float dis = 0.2 * total; //20% discount
+    total = total - dis;
+    return total;
+}
+
+float grand_total(float net_total){
+    float gst = 0.18 * net_total; //GST @18%
+    float grand_total = net_total + gst;
+    return grand_total;
+}
+int save_bill( orders order){
+    FILE *fp;
+    fp = fopen("InvoiceBill.txt","a+");
+			fwrite(&order,sizeof(orders),1,fp);
+            fclose(fp);
+			if(fwrite != 0)
+				return 1;
+			else
+			return -1;
 }
