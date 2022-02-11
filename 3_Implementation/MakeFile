@@ -5,12 +5,12 @@ PROJECT_NAME = Restaurant_Invoice_Generator
 BUILD = build
 
 # All source code files
-SRC = main.c\
-src/restaurant_operations.c
+SRC = src/main_code.c\
+src/operations.c\
 
 # All test source files
-TEST_SRC = src/restaurant_operations.c\
-unit/test_billing_operations.c\
+TEST_SRC = src/operations.c\
+unit/test_billing-operations.c\
 unit/unity.c\
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
@@ -50,7 +50,7 @@ all: $(SRC) $(BUILD)
 	gcc $(SRC) $(INC) -o $(call FixPath,$(PROJECT_OUTPUT))
 
 # Call `make run` to run the application
-run:$(PROJECT_NAME) 
+run:$(PROJECT_NAME)
 	./$(call FixPath,$(PROJECT_OUTPUT))
 
 # Document the code using Doxygen
