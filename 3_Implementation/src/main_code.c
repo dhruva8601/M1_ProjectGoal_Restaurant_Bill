@@ -60,7 +60,11 @@ while(contFlag =='y'){
 		generate_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
 		scanf("%1s",&save);
-		if(save == 'y'){//saves the bill in file and reads the contents when invoked in case2
+		if(save != 'y' || save!='Y'){
+			printf("\nEnter correct value [y/n]\t:");
+			scanf("%1s",&save);
+		}
+		if(save == 'y' || save == 'Y'){//saves the bill in file and reads the contents when invoked in case2
 			fp = fopen("InvoiceBill.txt","a+");
 			fwrite(&order,sizeof(orders),1,fp);			
 			if(fwrite != 0)
@@ -89,7 +93,7 @@ while(contFlag =='y'){
 		}		fclose(fp);
 		}
 		else{
-			printf("\n************* Sorry no Saved Invoices**************\n");
+			printf("\n************* Sorry no Saved Invoices **************\n");
 		}
 		break;
 
