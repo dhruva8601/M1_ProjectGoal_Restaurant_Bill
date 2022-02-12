@@ -53,7 +53,10 @@ while(contFlag =='y'){
 		generate_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
 		scanf("%1s",&save);
-		if(save != 'y' || save!='Y' || save == 'n'|| save == 'N'){
+		if(save =='n'||save=='N'){
+			break;
+		}
+		else{
 			printf("\nEnter correct value [y/n]\t:");
 			scanf("%1s",&save);
 		}
