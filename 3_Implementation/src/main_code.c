@@ -1,15 +1,8 @@
 #include "../inc/restaurant_operations.h"
 
-
-/*Function to generate Bill Header */
 void generate_header(char name[100], time_t date);
-
-/*Function to generate Bill Body */
 void generate_body( items item);
-
-/*Function to generate Bill Footer */
 void generate_footer(float total);
-
 
 /* Start of Application */
 int main(){
@@ -60,7 +53,7 @@ while(contFlag =='y'){
 		generate_footer(total);
 		printf("\nDo you want to save invoice [y/n]\t:");
 		scanf("%1s",&save);
-		if(save != 'y' || save!='Y'){
+		if(save != 'y' || save!='Y' || save == 'n'|| save == 'N'){
 			printf("\nEnter correct value [y/n]\t:");
 			scanf("%1s",&save);
 		}
@@ -199,3 +192,4 @@ int save_bill( orders order){
 			else
 			return -1;
 }
+
